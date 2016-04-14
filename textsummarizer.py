@@ -1,3 +1,5 @@
+# This particular application reads RSS feeds from CNN.com and then summarizes the text from it.
+
 import urllib2
 from frequencysummarizer import FrequencySummarizer
 from summarizer import get_only_text
@@ -31,7 +33,7 @@ def text_summarize(summary, n):
     return [sent_tokenize(summary)[j] for j in nlargest(n, dicttxt, key=dicttxt.get)]
 
 def text_summarize_main():
-  txtsum = map(lambda p: p.text, BeautifulSoup(urllib2.urlopen('http://feeds.bbci.co.uk/news/rss.xml').read().decode('utf8'), "lxml").find_all('guid'))
+  txtsum = map(lambda p: p.text, BeautifulSoup(urllib2.urlopen('http://rss.cnn.com/rss/cnn_topstories.rss').read().decode('utf8'), "lxml").find_all('guid'))
   for news in txtsum[:5]:
     headline = BeautifulSoup(urllib2.urlopen(news).read().decode('utf8'), "lxml").title.text
     summary = ' '.join(map(lambda p: p.text, BeautifulSoup(urllib2.urlopen(news).read().decode('utf8'), "lxml").find_all('p')))
@@ -47,3 +49,59 @@ def text_summarize_main():
 
 if __name__ == '__main__':
 	text_summarize_main()
+	
+
+output:
+
+	
+"""
+
+=============================================================================================================================================================
+
+
+Democratic debate in New York: What to watch - CNNPolitics.com
+
+
+1 . By MJ Lee and Chris Moody, CNN  Updated 8:29 AM ET, Thu April 14, 2016  New York (CNN)Hillary Clinton and Bernie Sanders will face off in CNN's Democratic presidential debate in Brooklyn Thursday night as they spar ahead of a critical contest in New York — a state where both candidates have deep roots.
+2 . This is exactly what @BernieSanders pledged to his supporters that he wouldn't do.
+
+
+=============================================================================================================================================================
+
+
+The two Brooklyns await the debate (Opinion) - CNN.com
+
+
+1 . Set edition preference: Set edition preference: Set edition preference: By Tanwi Nandini Islam   Updated 7:39 AM ET, Thu April 14, 2016  Watch Hillary Clinton and Bernie Sanders take part in the CNN Democratic Debate on Thursday evening at 9 p.m.
+2 . Tanwi Nandini Islam is the author of "Bright Lines," which was shortlisted for the Center for Fiction First Novel Prize and a finalist for the Edmund White Award for Debut Fiction.
+
+
+=============================================================================================================================================================
+
+
+Bernie and Hillary, stop the nastiness (Opinion) - CNN.com
+
+
+1 . Set edition preference: Set edition preference: Set edition preference: By Julian Zelizer  Updated 5:36 PM ET, Wed April 13, 2016   Watch Hillary Clinton and Bernie Sanders take part in the CNN Democratic Debate Thursday evening at 9 p.m. ET.Julian Zelizer is a professor of history and public affairs at Princeton University and a New America fellow.
+2 . (CNN)In Thursday night's Democratic debate in Brooklyn, Bernie Sanders and Hillary Clinton have an opportunity to restore a constructive tone to their competition and bring back the kind of vibrant ideological debate that until recently shaped much of the primary.
+
+
+=============================================================================================================================================================
+
+
+Bernie and Hillary: The toughest call - CNN.com
+
+
+1 . Set edition preference: Set edition preference: Set edition preference: By Sally Kohn, CNN Political Commentator  Updated 11:01 PM ET, Wed April 13, 2016   Sally Kohn is an activist, columnist and television commentator.
+2 . (CNN)Like a lot of New Yorkers, I haven't decided whether I'm voting for Hillary Clinton or Bernie Sanders in next week's New York State primary.
+
+
+=============================================================================================================================================================
+
+
+Who'd Putin save from drowning, Erdogan or Poroshenko? - CNN.com
+
+
+1 . Set edition preference: Set edition preference: Set edition preference: By Don Melvin, CNN  Updated 9:30 AM ET, Thu April 14, 2016   (CNN)[Breaking news update, posted at 9:30 a.m.
+
+"""
