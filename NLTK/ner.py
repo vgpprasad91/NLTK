@@ -1,5 +1,4 @@
 #Named Entity Recognition
-
 #Chunking with NLTK with the help of regular expressions
 
 #get all imports
