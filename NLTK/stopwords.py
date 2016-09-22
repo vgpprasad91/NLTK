@@ -1,5 +1,4 @@
 # Import the stopwords in english from the nltk corpus
-
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
