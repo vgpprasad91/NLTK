@@ -1,5 +1,4 @@
 # Organised Named Entity Recognition
-
 # -*- coding: utf-8 -*-
 
 import nltk
