@@ -1,5 +1,4 @@
 # This particular application reads RSS feeds from CNN.com and then summarizes the text from it.
-
 import urllib2
 from frequencysummarizer import FrequencySummarizer
 from summarizer import get_only_text
